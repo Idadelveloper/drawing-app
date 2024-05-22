@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var greenButton: ImageButton
     private lateinit var orangeButton: ImageButton
     private lateinit var blueButton: ImageButton
+    private lateinit var undoButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         redButton = findViewById(R.id.red_button)
         orangeButton = findViewById(R.id.orange_button)
         blueButton = findViewById(R.id.blue_button)
+        undoButton = findViewById(R.id.undo_button)
 
         drawingView = findViewById(R.id.drawing_view)
         drawingView.changeBrushSize((23.toFloat()))
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         redButton.setOnClickListener(this)
         orangeButton.setOnClickListener(this)
         blueButton.setOnClickListener(this)
+        undoButton.setOnClickListener(this)
 
     }
 
@@ -90,6 +93,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.blue_button -> {
                 drawingView.setColor("#2F6FF1")
+            }
+            R.id.undo_button -> {
+                drawingView.undoPath()
             }
         }
     }
